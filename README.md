@@ -17,3 +17,9 @@ There is no live preview of this version as I don't have the means to host the a
   1. Download or Clone the repository
   2. Open the project in Viusal Studio (Preferably VS2015 or higher)
   3. Run the project from wtihin VS to see it in action
+  
+------  
+  
+### Important
+
+There is no encryption on for passwords being added to the database as this was a college project and didn't require it.
