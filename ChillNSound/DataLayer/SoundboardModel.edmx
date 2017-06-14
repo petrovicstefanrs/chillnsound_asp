@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SoundboardDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="AboutDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="AboutName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sounds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoundUrl" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SoundDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdSound" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SoundInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SoundUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="ImageUrl" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SoundUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSound" Type="int" Mode="In" />
+          <Parameter Name="SoundUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="ImageUrl" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateAbout" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAbout" Type="int" Mode="In" />
+          <Parameter Name="Image" Type="nvarchar" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Desc" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SoundboardDBModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sounds" EntityType="Self.Sounds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SoundboardDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sound">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoundUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SoundboardDBEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="Sounds" EntityType="Self.Sound" />
+          <FunctionImport Name="SoundInsert">
+            <Parameter Name="SoundUrl" Mode="In" Type="String" />
+            <Parameter Name="ImageUrl" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SoundUpdate">
+            <Parameter Name="idSound" Mode="In" Type="Int32" />
+            <Parameter Name="SoundUrl" Mode="In" Type="String" />
+            <Parameter Name="ImageUrl" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Users" EntityType="SoundboardDBModel.User" />
+          <FunctionImport Name="DeleteUser">
+          <Parameter Name="IdUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SoundDelete">
+          <Parameter Name="IdSound" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAbout">
+            <Parameter Name="IdAbout" Mode="In" Type="Int32" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Desc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserInsert">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UserUpdate">
+            <Parameter Name="IdUser" Mode="In" Type="Int32" />
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Abouts" EntityType="SoundboardDBModel.About" />
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboutDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboutName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SoundboardDBModelStoreContainer" CdmEntityContainer="SoundboardDBEntities">
+          <EntitySetMapping Name="Sounds">
+            <EntityTypeMapping TypeName="SoundboardDBModel.Sound">
+              <MappingFragment StoreEntitySet="Sounds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="SoundUrl" ColumnName="SoundUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SoundInsert" FunctionName="SoundboardDBModel.Store.SoundInsert" />
+          <FunctionImportMapping FunctionImportName="SoundUpdate" FunctionName="SoundboardDBModel.Store.SoundUpdate" />
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SoundboardDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="SoundboardDBModel.Store.DeleteUser" />
+          <FunctionImportMapping FunctionImportName="SoundDelete" FunctionName="SoundboardDBModel.Store.SoundDelete" />
+          <FunctionImportMapping FunctionImportName="UpdateAbout" FunctionName="SoundboardDBModel.Store.UpdateAbout" />
+          <FunctionImportMapping FunctionImportName="UserInsert" FunctionName="SoundboardDBModel.Store.UserInsert" />
+          <FunctionImportMapping FunctionImportName="UserUpdate" FunctionName="SoundboardDBModel.Store.UserUpdate" />
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="SoundboardDBModel.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="AboutName" ColumnName="AboutName" />
+                <ScalarProperty Name="AboutDesc" ColumnName="AboutDesc" />
+                <ScalarProperty Name="AboutImg" ColumnName="AboutImg" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

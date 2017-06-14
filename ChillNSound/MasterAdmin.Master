@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterAdmin.master.cs" Inherits="ChillNSound.MasterAdmin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Chill n' Sound - Relax with the sounds of Nautre</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<meta name="description" content="Relax with sounds of nature! Play and Mix Ambient sounds to boost concentration and productivity. Create your perfect enviroment."/>
+   
+    <meta name="keywords" content="Stefan, Petrović, Petrovic, sounds, nature sounds, chill, play, mix, boost, productivity, improve, concentration, ambient, enviroment, soundbord, zen, calming, calm"/>
+
+    <meta name="author" content="Stefan Petrović"/>
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicon.png"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header>
+		<h1 id="naslov" runat="server"></h1>
+		<p id="desc" class="desc" runat="server">
+		</p>
+	</header>
+
+	<section id="main">
+        <asp:ContentPlaceHolder ID="admin_content" runat="server"></asp:ContentPlaceHolder>
+	</section>
+	
+	<footer>
+		<div class="footer_container">
+			<span class="made_with">
+				Made with <i class="fa fa-heart" aria-hidden="true"></i> and <i class="fa fa-coffee" aria-hidden="true"></i>
+			</span>
+			<span class="copyright">
+				Copyright © 2017 by <a href="https://petrovicstefan.rs">Petrovic Stefan</a> | All rights reserved.
+			</span>
+		</div>
+
+		<asp:ContentPlaceHolder ID="FooterLinksPlaceholder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+		
+
+		<!--FontAwesome-->
+		<script src="https://use.fontawesome.com/11fc9055ad.js"></script>	
+
+		<!--<script src="js/main.js"></script>-->
+	</footer>
+</body>
+</html>

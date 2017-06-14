@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SoundboardDBModelStoreContainer" CdmEntityContainer="SoundboardDBEntities">
+    <EntitySetMapping Name="Sounds">
+      <EntityTypeMapping TypeName="SoundboardDBModel.Sound">
+        <MappingFragment StoreEntitySet="Sounds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="SoundUrl" ColumnName="SoundUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SoundInsert" FunctionName="SoundboardDBModel.Store.SoundInsert" />
+    <FunctionImportMapping FunctionImportName="SoundUpdate" FunctionName="SoundboardDBModel.Store.SoundUpdate" />
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SoundboardDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="SoundboardDBModel.Store.DeleteUser" />
+    <FunctionImportMapping FunctionImportName="SoundDelete" FunctionName="SoundboardDBModel.Store.SoundDelete" />
+    <FunctionImportMapping FunctionImportName="UpdateAbout" FunctionName="SoundboardDBModel.Store.UpdateAbout" />
+    <FunctionImportMapping FunctionImportName="UserInsert" FunctionName="SoundboardDBModel.Store.UserInsert" />
+    <FunctionImportMapping FunctionImportName="UserUpdate" FunctionName="SoundboardDBModel.Store.UserUpdate" />
+    <EntitySetMapping Name="Abouts">
+      <EntityTypeMapping TypeName="SoundboardDBModel.About">
+        <MappingFragment StoreEntitySet="About">
+          <ScalarProperty Name="AboutName" ColumnName="AboutName" />
+          <ScalarProperty Name="AboutDesc" ColumnName="AboutDesc" />
+          <ScalarProperty Name="AboutImg" ColumnName="AboutImg" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
