@@ -6,6 +6,10 @@ Relax with the sounds of nature! Play and Mix Ambient sounds to boost concentrat
 
 This version of the Chill N' Sound is using ASP.NET for backend used for creating a light feature Admin Panel to control adding sounds and sound icons. You can also add new admins with admin panel, to allow other people to moderate the app.
 
+>Note:
+
+There is no live preview of this version as I don't have the means to host the app.
+
 ------
 
 ## Instalation
